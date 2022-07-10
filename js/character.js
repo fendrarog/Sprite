@@ -33,7 +33,11 @@ export class Character {
     const loop = () => {
       this.update(ticksPerFrame);
       this.walk(this.keyPress);
-      this.render(canvasWidth, canvasHeight);
+      if (this.numberOfSprites >= 21) {
+        this.renderAttack(canvasWidth, canvasHeight);
+      } else {
+        this.render(canvasWidth, canvasHeight);
+      }
 
       window.requestAnimationFrame(loop);
     };
@@ -41,11 +45,13 @@ export class Character {
   }
 
   update(ticksPerFrame) {
+    console.log(this.frameIndex);
     this.tickCount++;
     if (this.tickCount > ticksPerFrame) {
       this.tickCount = 0;
       if (this.frameIndex < this.numberOfFrames - 1) {
         this.frameIndex++;
+        console.log(this.frameIndex);
       } else {
         this.frameIndex = 1;
       }
@@ -57,18 +63,37 @@ export class Character {
       case keyPress.KeyW:
         this.y--;
         this.numberOfSprites = 8;
+        this.numberOfFrames = 9;
         break;
       case keyPress.KeyA:
         this.x--;
         this.numberOfSprites = 9;
+        this.numberOfFrames = 9;
         break;
       case keyPress.KeyS:
         this.y++;
         this.numberOfSprites = 10;
+        this.numberOfFrames = 9;
         break;
       case keyPress.KeyD:
         this.x++;
         this.numberOfSprites = 11;
+        this.numberOfFrames = 9;
+        break;
+      case keyPress.Space:
+        if (this.numberOfSprites === 8) {
+          this.numberOfSprites = 21;
+          this.numberOfFrames = 6;
+        } else if (this.numberOfSprites === 9) {
+          this.numberOfSprites = 24;
+          this.numberOfFrames = 6;
+        } else if (this.numberOfSprites === 10) {
+          this.numberOfSprites = 27;
+          this.numberOfFrames = 6;
+        } else if (this.numberOfSprites === 11) {
+          this.numberOfSprites = 30;
+          this.numberOfFrames = 6;
+        }
         break;
       default:
         this.frameIndex = 0;
@@ -87,6 +112,21 @@ export class Character {
       this.y,
       64,
       64
+    );
+  }
+
+  renderAttack(canvasWidth, canvasHeight) {
+    this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    this.ctx.drawImage(
+      this.image,
+      this.frameIndex * 192,
+      this.numberOfSprites * 64,
+      192,
+      192,
+      this.x - 64,
+      this.y - 64,
+      192,
+      192
     );
   }
 }

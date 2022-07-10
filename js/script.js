@@ -9,7 +9,7 @@ let requestAnimationFrame =
 window.requestAnimationFrame = requestAnimationFrame;
 
 let arab = new Image();
-arab.src = "./img/yasha.png";
+arab.src = "./img/dark-knight.png";
 
 class Game {
   constructor(options) {
@@ -56,7 +56,7 @@ const arabCharacter = new Character({
 arab.onload = () => {
   const game = new Game({
     player: arabCharacter,
-    ticksPerFrame: 10,
+    ticksPerFrame: 8,
   });
 
   game.start();
