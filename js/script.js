@@ -39,8 +39,7 @@ class Game {
     this.player.play(
       this.ticksPerFrame,
       this.$canvas.width,
-      this.$canvas.height,
-      this.keyPress
+      this.$canvas.height
     );
   }
 }

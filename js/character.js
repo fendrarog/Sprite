@@ -19,36 +19,17 @@ export class Character {
   }
 
   keyDownListener(e) {
-    this.keyPress[e.key] = true;
+    this.keyPress[e.code] = true;
     console.log(this.keyPress);
   }
 
   keyUpListener(e) {
-    this.keyPress[e.key] = false;
+    this.keyPress[e.code] = false;
     console.log(this.keyPress);
   }
 
-  /*   setDirection(e) {
-    if (e.keyCode === 87) {
-      this.numberOfSprites = 8;
-      console.log(this.numberOfSprites);
-    }
-    if (e.keyCode === 68) {
-      this.numberOfSprites = 11;
-      console.log(this.numberOfSprites);
-    }
-    if (e.keyCode === 83) {
-      this.numberOfSprites = 10;
-      console.log(this.numberOfSprites);
-    }
-    if (e.keyCode === 65) {
-      this.numberOfSprites = 9;
-      console.log(this.numberOfSprites);
-    }
-  } */
-
   // принимает tic-и
-  play(ticksPerFrame, canvasWidth, canvasHeight, keyPress) {
+  play(ticksPerFrame, canvasWidth, canvasHeight) {
     const loop = () => {
       this.update(ticksPerFrame);
       this.walk(this.keyPress);
@@ -73,24 +54,24 @@ export class Character {
 
   walk(keyPress) {
     switch (true) {
-      case keyPress.w:
+      case keyPress.KeyW:
         this.y--;
         this.numberOfSprites = 8;
         break;
-      case keyPress.a:
+      case keyPress.KeyA:
         this.x--;
         this.numberOfSprites = 9;
         break;
-      case keyPress.s:
+      case keyPress.KeyS:
         this.y++;
         this.numberOfSprites = 10;
         break;
-      case keyPress.d:
+      case keyPress.KeyD:
         this.x++;
         this.numberOfSprites = 11;
         break;
       default:
-
+        this.frameIndex = 0;
     }
   }
 
