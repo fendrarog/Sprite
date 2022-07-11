@@ -61,6 +61,23 @@ export class Character {
 
   walk(keyPress) {
     switch (true) {
+      case keyPress.Space:
+        if (this.numberOfSprites === 8) {
+          this.numberOfSprites = 21;
+          this.numberOfFrames = 6;
+        } else if (this.numberOfSprites === 9) {
+          this.numberOfSprites = 24;
+          this.numberOfFrames = 6;
+        } else if (this.numberOfSprites === 10) {
+          this.numberOfSprites = 27;
+          this.numberOfFrames = 6;
+        } else if (this.numberOfSprites === 11) {
+          this.numberOfSprites = 30;
+          this.numberOfFrames = 6;
+        }
+        this.audio.armorWalk.pause();
+        this.audio.swordSwipe.play();
+        break;
       case keyPress.KeyW:
         this.y--;
         this.numberOfSprites = 8;
@@ -84,23 +101,6 @@ export class Character {
         this.numberOfSprites = 11;
         this.numberOfFrames = 9;
         this.audio.armorWalk.play();
-        break;
-      case keyPress.Space:
-        if (this.numberOfSprites === 8) {
-          this.numberOfSprites = 21;
-          this.numberOfFrames = 6;
-        } else if (this.numberOfSprites === 9) {
-          this.numberOfSprites = 24;
-          this.numberOfFrames = 6;
-        } else if (this.numberOfSprites === 10) {
-          this.numberOfSprites = 27;
-          this.numberOfFrames = 6;
-        } else if (this.numberOfSprites === 11) {
-          this.numberOfSprites = 30;
-          this.numberOfFrames = 6;
-        }
-        this.audio.armorWalk.pause();
-        this.audio.swordSwipe.play();
         break;
       default:
         this.frameIndex = 0;
