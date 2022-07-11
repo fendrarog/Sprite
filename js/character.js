@@ -13,8 +13,8 @@ export class Character {
     this.numberOfFrames = options.numberOfFrames || 1;
     this.numberOfSprites = options.numberOfSprites || 0;
 
-    this.x = 0;
-    this.y = 0;
+    this.x = 340;
+    this.y = 180;
 
     this.keyPress = {};
   }
