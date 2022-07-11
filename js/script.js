@@ -10,8 +10,10 @@ window.requestAnimationFrame = requestAnimationFrame;
 
 const swordSwipe = new Audio();
 swordSwipe.src = "./audio/sword-swipe.mp3";
+swordSwipe.volume = 0.5;
 const armorWalk = new Audio();
 armorWalk.src = "./audio/armor-walking.mp3";
+armorWalk.volume = 0.4;
 
 const arab = new Image();
 arab.src = "./img/dark-knight.png";
