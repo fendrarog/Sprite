@@ -8,7 +8,12 @@ let requestAnimationFrame =
   window.webkitRequestAnimationFrame;
 window.requestAnimationFrame = requestAnimationFrame;
 
-let arab = new Image();
+const swordSwipe = new Audio();
+swordSwipe.src = "./audio/sword-swipe.mp3";
+const armorWalk = new Audio();
+armorWalk.src = "./audio/armor-walking.mp3";
+
+const arab = new Image();
 arab.src = "./img/dark-knight.png";
 
 class Game {
@@ -47,6 +52,7 @@ class Game {
 const arabCharacter = new Character({
   ctx: canvas.getContext("2d"),
   image: arab,
+  audio: { swordSwipe, armorWalk },
   width: 832,
   height: 1344,
   numberOfFrames: 9,

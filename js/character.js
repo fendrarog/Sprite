@@ -3,6 +3,7 @@ export class Character {
     this.ctx = options.ctx;
 
     this.image = options.image;
+    this.audio = options.audio;
     this.width = options.width;
     this.height = options.height;
 
@@ -64,21 +65,25 @@ export class Character {
         this.y--;
         this.numberOfSprites = 8;
         this.numberOfFrames = 9;
+        this.audio.armorWalk.play();
         break;
       case keyPress.KeyA:
         this.x--;
         this.numberOfSprites = 9;
         this.numberOfFrames = 9;
+        this.audio.armorWalk.play();
         break;
       case keyPress.KeyS:
         this.y++;
         this.numberOfSprites = 10;
         this.numberOfFrames = 9;
+        this.audio.armorWalk.play();
         break;
       case keyPress.KeyD:
         this.x++;
         this.numberOfSprites = 11;
         this.numberOfFrames = 9;
+        this.audio.armorWalk.play();
         break;
       case keyPress.Space:
         if (this.numberOfSprites === 8) {
@@ -94,9 +99,12 @@ export class Character {
           this.numberOfSprites = 30;
           this.numberOfFrames = 6;
         }
+        this.audio.armorWalk.pause();
+        this.audio.swordSwipe.play();
         break;
       default:
         this.frameIndex = 0;
+        this.audio.armorWalk.pause();
     }
   }
 
